@@ -728,7 +728,10 @@ body {
   background-color: rgba(51, 112, 255, 0.1);
 }
 .post-content p img {
-  width: 80%;
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 0 auto;
 }
 .post-content ul,
 .post-content ol {
@@ -744,6 +747,13 @@ body {
   line-height: 170%;
   letter-spacing: 1px;
   word-break: break-all;
+}
+.post-content ul li img,
+.post-content ol li img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 0 auto;
 }
 .post-content ul li:hover,
 .post-content ol li:hover {
