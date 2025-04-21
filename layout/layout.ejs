@@ -104,3 +104,12 @@
     </div>
 <% } %>
 </html>
+
+<!-- fancybox support -->
+<% if(config.fancybox===true && page.fancybox !==false) { %>
+    <!-- for config: default is false -->
+    <!-- for page: default is true -->
+    <%- js([{src:'js/fancybox/jquery.fancybox.min.js',key:'fancybox_js'}],[{src:'js/fancybox/wrapImage.js',
+        key:'wrap_image_js'}] ) %>
+        <%- css({href:'js/fancybox/jquery.fancybox.min.css', key:'fancybox_css'}) %>
+            <% } %>
