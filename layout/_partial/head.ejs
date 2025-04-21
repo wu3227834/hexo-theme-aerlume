@@ -5,27 +5,26 @@
     <meta property="og:description" content="<%= config.description %>">
     <meta property="og:type" content="website">
     <meta name="description" content="<%= config.description %>">
-    <meta name="keyword"  content="<%= config.keyword %>">
+    <meta name="keyword" content="<%= config.keyword %>">
     <link rel="shortcut icon" href="<%= config.root %>img/favicon.ico">
 
     <title>
         <% if (page.title) { %>
-        <%= page.title + ' - ' + config.SEOTitle %>
-        <% } else{%>
-        <%= config.SEOTitle %>
-        <% } %>
+            <%= page.title + ' - ' + config.SEOTitle %>
+                <% } else{%>
+                    <%= config.SEOTitle %>
+                        <% } %>
     </title>
 
     <!-- Custom CSS -->
     <%- css('css/aircloud.css') %>
-    <%- css('css/gitment.css') %>
-    <!--<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">-->
-    <link href="//at.alicdn.com/t/font_620856_28hi1hpxx24.css" rel="stylesheet" type="text/css">
-    <!-- ga & ba script hoook -->
-    <script></script>
+        <%- css('css/gitment.css') %>
+            <!--<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">-->
+            <link rel="stylesheet" href="/css/prism.css">
+            <link href="//at.alicdn.com/t/font_620856_28hi1hpxx24.css" rel="stylesheet" type="text/css">
+            <!-- ga & ba script hoook -->
+            <script>
+            </script>
 
-    <%- partial('_partial/analytics', null, {cache: false}) %>
-
-    <script defer src="https://cloud.umami.is/script.js" data-website-id="bad0a741-25cb-4dd6-bbcf-f5710aeb243c"></script>
-
+            <%- partial('_partial/analytics', null, {cache: false}) %>
 </head>
