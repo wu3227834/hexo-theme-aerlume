@@ -32,6 +32,11 @@
 
 <%- partial('_partial/footer', null, {cache: false}) %>
 
+<!-- codecopy support -->
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.js"></script>
+<script type="text/javascript" src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+<script type="text/javascript" src="/js/clipboard.js"></script>
+
 </body>
 
 <script>
@@ -112,5 +117,5 @@
     <!-- for page: default is true -->
     <%- js([{src:'js/fancybox/jquery.fancybox.min.js',key:'fancybox_js'}],[{src:'js/fancybox/wrapImage.js',
         key:'wrap_image_js'}] ) %>
-        <%- css({href:'js/fancybox/jquery.fancybox.min.css', key:'fancybox_css'}) %>
-            <% } %>
+    <%- css({href:'js/fancybox/jquery.fancybox.min.css', key:'fancybox_css'}) %>
+<% } %>
