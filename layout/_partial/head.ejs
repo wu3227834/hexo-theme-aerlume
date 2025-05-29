@@ -4,29 +4,37 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta property="og:description" content="<%= config.description %>">
     <meta property="og:type" content="website">
-    <meta name="description" content="<%= config.description %>">
-    <meta name="keyword" content="<%= config.keyword %>">
+    <% if (page.keywords){ %>
+        <meta name="keywords" content="<%= page.keywords %>,<%= config.keywords %>">
+        <% } else if (config.keywords){ %>
+        <meta name="keywords" content="<%= config.keywords %>">
+    <%} %>
+    <% if (page.description){ %>
+        <meta name="description" content="<%= page.description %>">
+        <% } else { %>
+        <meta name="description" content="<%= config.description %>">
+    <%} %>
     <link rel="shortcut icon" href="<%= config.root %>img/favicon.ico">
 
     <title>
         <% if (page.title) { %>
-            <%= page.title + ' - ' + config.SEOTitle %>
-                <% } else{%>
-                    <%= config.SEOTitle %>
-                        <% } %>
+            <%= page.title %>
+        <% } else{%>
+            <%= config.SEOTitle %>
+        <% } %>
     </title>
 
     <!-- Custom CSS -->
     <%- css('css/aircloud.css') %>
-        <%- css('css/gitment.css') %>
-            <!--<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">-->
-            <link rel="stylesheet" href="/css/prism.css">
-            <link href="//at.alicdn.com/t/font_620856_28hi1hpxx24.css" rel="stylesheet" type="text/css">
-            <!-- ga & ba script hoook -->
-            <script>
-            </script>
+    <%- css('css/gitment.css') %>
+    <!--<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">-->
+    <link rel="stylesheet" href="/css/prism.css">
+    <link href="//at.alicdn.com/t/font_620856_28hi1hpxx24.css" rel="stylesheet" type="text/css">
+    <!-- ga & ba script hoook -->
+    <script>
+    </script>
 
-            <%- partial('_partial/analytics', null, {cache: false}) %>
+    <%- partial('_partial/analytics', null, {cache: false}) %>
     
     <!-- umami -->
     <script defer src="https://cloud.umami.is/script.js" data-website-id="bad0a741-25cb-4dd6-bbcf-f5710aeb243c"></script>
