@@ -14,6 +14,9 @@ body {
 .red {
   color: red;
 }
+strong {
+  font-weight: bold;
+}
 .hide {
   display: none !important;
 }
@@ -682,9 +685,9 @@ body {
   letter-spacing: 1px;
   word-break: break-all;
 }
-/* .post-content p:hover {
+.article-content:hover {
   background-color: rgba(51, 112, 255, 0.1);
-} */
+}
 .post-content {
   line-height: 20px;
   font-size: 15px;
@@ -739,9 +742,6 @@ body {
   letter-spacing: 1px;
   word-break: break-all;
 }
-.post-content p:hover {
-  background-color: rgba(51, 112, 255, 0.1);
-}
 .post-content p img {
   max-width: 100%;
   height: auto;
@@ -770,7 +770,6 @@ body {
   display: block;
   margin: 0 auto;
 }
-.post-content ul li:hover,
 /* .post-content ul li:hover,
 .post-content ol li:hover {
   background-color: rgba(51, 112, 255, 0.1);
