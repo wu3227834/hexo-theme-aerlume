@@ -26,10 +26,17 @@
             <%- partial('_partial/donate', null, {cache: false}) %>
         <% } %>
         <br />
-        <div id="comment-container">
-        </div>
-        <div id="disqus_thread"></div>
-        <div id="lv-container"></div>
-        <div class="giscus"></div>
+        <% if(page.comments && config.comment && config.comment.type === 'gitment'){ %>
+            <div id="comment-container"></div>
+        <% } %>
+        <% if(page.comments && config.comment && config.comment.type === 'disqus'){ %>
+            <div id="disqus_thread"></div>
+        <% } %>
+        <% if(page.comments && config.comment && config.comment.type === 'livere'){ %>
+            <div id="lv-container"></div>
+        <% } %>
+        <% if(page.comments && config.comment && config.comment.type === 'giscus'){ %>
+            <div class="giscus"></div>
+        <% } %>
     </div>
 </div>
