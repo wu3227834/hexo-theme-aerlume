@@ -868,18 +868,20 @@ strong {
   justify-content: center;
   height: max-content;
   position: relative;
-  width: 1024px;
+  width: 80%;
+  max-width: 1400px;
   margin: auto;
   display: flex;
   flex-direction: row;
   background-color: white;
+  padding: 0 20px;
 }
 .index-container .index-left {
   width: 240px;
 }
 .index-container .index-middle {
-  max-width: 784px;
   flex: 1;
+  max-width: calc(100% - 240px);
 }
 @media screen and (max-width: 1180px) {
   .index-container {
