@@ -8,30 +8,32 @@
   .post-title{
     width: 100%;
     text-align: center;
-    line-height: 24px;
+    line-height: 1.4;
     margin-top: 0;
-    margin-bottom: 5px;
-    color: #101010;
-    font-size: 20px;
-    font-weight: 300;
+    margin-bottom: 12px;
+    color: #1A1A1A;
+    font-size: 26px;
+    font-weight: 400;
   }
   .post-meta{
     text-align: center;
     margin-top: 0;
+    margin-bottom: 30px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #F0F0F0;
     span,a{
       font-weight: 300;
-      color: #999999;
+      color: #979797;
       font-size: 13px;
       text-decoration: none;
     }
-    .attr{
-      margin-right: 5px;
-      margin-left: 5px;
+    a:hover{
+      color: @link-color;
     }
-    //.attr:not(:last-child)::after{
-    //  content: "|"
-    //}
-    margin-bottom: 20px;
+    .attr{
+      margin-right: 8px;
+      margin-left: 8px;
+    }
   }
 }
 
@@ -41,9 +43,6 @@
   line-height: 170%;
   letter-spacing: 1px;
   word-break: break-all;
-  &:hover {
-    background-color: rgba(51,112,255,0.1);
-  }
 }
 
 .post-content{
@@ -56,28 +55,39 @@
   >table, >table tr th, >table tr td { border:1px solid #e7e8e9; }
   table { border-collapse: collapse;}
   blockquote{
-    border-top: 1px solid #cccccc;
-    border-bottom: 1px solid #cccccc;
-    margin-left: 2em;
-    margin-right: 2em;
-    padding-left: 0;
-    padding-right: 0;
+    border-top: none;
+    border-bottom: none;
+    border-left: 3px solid @link-color;
+    margin: 20px 0;
+    margin-left: 1em;
+    margin-right: 1em;
+    padding: 12px 16px;
+    background-color: #F8FAFE;
+    border-radius: 0 4px 4px 0;
     p {
       margin-top: 10px;
       margin-bottom: 10px;
-      color: #666666;
+      color: #555555;
+      text-indent: 0;
     }
   }
   a {
     text-decoration: none;
     color: @link-color;
+    border-bottom: 1px solid transparent;
+    transition: border-color @transitionTime;
+    &:hover {
+      border-bottom-color: @link-color;
+    }
   }
   p {
     color: @main-font-color;
     text-indent: 2em;
     .article-content();
     img {
-      width: 80%
+      width: 80%;
+      display: block;
+      margin: 20px auto 10px;
     }
   }
   ul,ol{
@@ -110,56 +120,66 @@
 
   h1{
     color:@main-font-color;
-    margin-top: 20px;
-    margin-bottom: 20px;
-    line-height: 120%;
+    margin-top: 32px;
+    margin-bottom: 16px;
+    line-height: 1.35;
     word-break: break-all;
-    font-size: 22px;
+    font-size: 24px;
+    font-weight: 500;
+    padding-bottom: 8px;
+    border-bottom: 1px solid #EFEFEF;
   }
 
   h2{
     color:@main-font-color;
-    margin-top: 20px;
-    margin-bottom: 20px;
-    line-height: 120%;
+    margin-top: 28px;
+    margin-bottom: 14px;
+    line-height: 1.35;
     word-break: break-all;
-    font-size: 21px;
+    font-size: 22px;
+    font-weight: 500;
+    padding-bottom: 6px;
+    border-bottom: 1px solid #F2F2F2;
   }
 
   h3{
     color:@main-font-color;
-    margin-top: 20px;
-    margin-bottom: 20px;
-    line-height: 120%;
+    margin-top: 24px;
+    margin-bottom: 12px;
+    line-height: 1.35;
     word-break: break-all;
     font-size: 20px;
+    font-weight: 500;
   }
 
   h4{
     color:@main-font-color;
     margin-top: 20px;
-    margin-bottom:20px;
-    line-height: 120%;
+    margin-bottom: 10px;
+    line-height: 1.4;
     word-break: break-all;
-    font-size: 19px;
+    font-size: 18px;
+    font-weight: 500;
   }
 
   h5{
     color:@main-font-color;
-    margin-top: 20px;
-    margin-bottom: 20px;
-    line-height: 120%;
+    margin-top: 18px;
+    margin-bottom: 10px;
+    line-height: 1.4;
     word-break: break-all;
-    font-size: 18px;
+    font-size: 17px;
+    font-weight: 500;
   }
 
   h6{
     color:@main-font-color;
-    margin-top: 20px;
-    margin-bottom: 20px;
-    line-height: 120%;
+    margin-top: 16px;
+    margin-bottom: 8px;
+    line-height: 1.4;
     word-break: break-all;
-    font-size: 17px;
+    font-size: 16px;
+    font-weight: 500;
   }
 
   figcaption{
