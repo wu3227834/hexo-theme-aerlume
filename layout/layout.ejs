@@ -43,19 +43,14 @@
 <!-- 不蒜子统计 - 异步加载 -->
 <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 
-<!-- 代码复制 - 按需延迟加载 -->
+<!-- 代码复制 / 查看源码 - 按需延迟加载（自包含，无外部依赖） -->
 <script>
 (function() {
     function loadClipboard() {
         if (document.querySelector('.highlight')) {
-            var s1 = document.createElement('script');
-            s1.src = 'https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js';
-            s1.onload = function() {
-                var s2 = document.createElement('script');
-                s2.src = '<%= url_for("js/clipboard.js") %>';
-                document.body.appendChild(s2);
-            };
-            document.body.appendChild(s1);
+            var s = document.createElement('script');
+            s.src = '<%= url_for("js/clipboard.js") %>';
+            document.body.appendChild(s);
         }
     }
     if (document.readyState === 'loading') {

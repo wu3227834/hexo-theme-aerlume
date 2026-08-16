@@ -5,9 +5,10 @@ pre,
   padding: 0;
   font-size: 13px;
   color: #4d4d4c;
-  background: #f7f7f7;
+  background: #f7f7f9;
   line-height: 1.6;
   border-radius: 6px;
+  border: 1px solid #ECECEC;
 }
 pre,
 pre span,
@@ -62,28 +63,26 @@ pre code {
   border-bottom-color: #4d4d4c;
 }
 .highlight .gutter pre {
-  padding-left: 10px;
-  padding-right: 10px;
-  color: #869194;
+  padding-left: 12px;
+  padding-right: 12px;
+  color: #999;
   text-align: right;
   background-color: #f0f1f3;
   border-radius: 6px 0 0 6px;
-}
-.highlight .code pre {
-  width: 100%;
-  padding-left: 10px;
-  padding-right: 80px;
-  background-color: #f7f7f7;
-  border-radius: 0 6px 6px 0;
-}
-.highlight .line {
-  height: 20px;
-}
-.gutter {
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
+}
+.highlight .code pre {
+  width: 100%;
+  padding-left: 12px;
+  padding-right: 80px;
+  background-color: #f7f7f9;
+  border-radius: 0 6px 6px 0;
+}
+.highlight .line {
+  height: 20px;
 }
 .gist table {
   width: auto;
@@ -158,7 +157,7 @@ pre .javascript .function {
   color: #8959a8;
 }
 
-// 代码块操作按钮
+// 代码块操作按钮（内联 SVG 图标）
 .highlight {
   position: relative;
 }
@@ -187,7 +186,7 @@ pre .javascript .function {
   font-size: 11px;
   font-family: consolas, Menlo, monospace;
   color: #979797;
-  background-color: rgba(255, 255, 255, 0.8);
+  background-color: rgba(255, 255, 255, 0.85);
   padding: 2px 8px;
   border-radius: 999px;
   text-transform: uppercase;
@@ -199,7 +198,7 @@ pre .javascript .function {
 .btn-view-raw {
   display: inline-flex;
   align-items: center;
-  gap: 4px;
+  gap: 5px;
   padding: 4px 10px;
   border: none;
   border-radius: 999px;
@@ -211,8 +210,9 @@ pre .javascript .function {
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
   line-height: 20px;
   outline: none;
-  i {
-    font-size: 12px;
+  svg {
+    flex-shrink: 0;
+    display: block;
   }
   span {
     font-family: -apple-system, "Helvetica Neue", Arial, sans-serif;
@@ -227,19 +227,7 @@ pre .javascript .function {
   }
   &.is-copied {
     color: #2EA44F;
-    background-color: rgba(46, 164, 79, 0.08);
-  }
-}
-
-// Prism okaidia 主题的深色代码块中按钮适配
-pre[class*="language-"] .code-actions .btn-copy,
-pre[class*="language-"] .code-actions .btn-view-raw,
-pre[class*="language-"] .code-actions .code-lang {
-  background-color: rgba(255, 255, 255, 0.12);
-  color: #cccccc;
-  &:hover {
-    background-color: rgba(255, 255, 255, 0.2);
-    color: #ffffff;
+    background-color: rgba(46, 164, 79, 0.1);
   }
 }
 
@@ -311,7 +299,7 @@ pre[class*="language-"] .code-actions .code-lang {
   .code-modal-close {
     display: inline-flex;
     align-items: center;
-    gap: 4px;
+    gap: 5px;
     padding: 5px 12px;
     border: none;
     border-radius: 6px;
@@ -319,12 +307,15 @@ pre[class*="language-"] .code-actions .code-lang {
     font-size: 12px;
     transition: background-color @transitionTime, color @transitionTime;
     outline: none;
+    svg {
+      flex-shrink: 0;
+      display: block;
+    }
   }
 
   .code-modal-copy {
     background-color: rgba(255, 255, 255, 0.1);
     color: #CDD6F4;
-    i { font-size: 12px; }
     &:hover {
       background-color: rgba(255, 255, 255, 0.18);
     }
@@ -378,6 +369,9 @@ pre[class*="language-"] .code-actions .code-lang {
     top: 6px;
     right: 6px;
     gap: 4px;
+    // 移动端常显，避免触屏无 hover
+    opacity: 1;
+    pointer-events: auto;
   }
   .btn-copy,
   .btn-view-raw {
@@ -396,9 +390,4 @@ pre[class*="language-"] .code-actions .code-lang {
     max-height: 85vh;
     border-radius: 8px;
   }
-}
-
-// 覆盖 Prism toolbar 默认样式 — 隐藏它，使用自定义 code-actions
-div.code-toolbar > .toolbar {
-  display: none !important;
 }

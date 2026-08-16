@@ -27,14 +27,9 @@
     <!-- 资源提示：提前建立连接 -->
     <link rel="preconnect" href="https://at.alicdn.com" crossorigin>
     <link rel="dns-prefetch" href="//busuanzi.ibruce.info">
-    <link rel="dns-prefetch" href="//cdn.jsdelivr.net">
 
     <!-- 关键 CSS：主样式同步加载 -->
     <%- css('css/aircloud.css') %>
-
-    <!-- 非关键 CSS：延迟加载 -->
-    <link rel="preload" href="<%= url_for('css/prism.css') %>" as="style" onload="this.onload=null;this.rel='stylesheet'">
-    <noscript><link rel="stylesheet" href="<%= url_for('css/prism.css') %>"></noscript>
 
     <!-- iconfont 异步加载 -->
     <link rel="preload" href="https://at.alicdn.com/t/font_620856_28hi1hpxx24.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
