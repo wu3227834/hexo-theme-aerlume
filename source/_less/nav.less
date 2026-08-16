@@ -137,45 +137,43 @@
       padding-left: 0;
       margin-top: 20px;
       margin-bottom: 20px;
-      li,li a{
-        text-decoration: none;
-        font-size: 15px;
-        i{
-          cursor: pointer;
-          color: #999999;
-          margin-right: 5px;
-          transition: color @transitionTime;
-        }
-        span{
-          cursor: pointer;
-          color: #999999;
-          transition: color @transitionTime;
-        }
-        margin: 14px auto;
+      li{
+        margin: 4px auto;
         padding-left: 0;
         list-style: none;
+        a{
+          display: block;
+          text-decoration: none;
+          font-size: 15px;
+          padding: 8px 12px;
+          border-radius: 8px;
+          transition: background-color @transitionTime, color @transitionTime;
+          i{
+            cursor: pointer;
+            color: #999999;
+            margin-right: 8px;
+            transition: color @transitionTime;
+          }
+          span{
+            cursor: pointer;
+            color: #999999;
+            transition: color @transitionTime;
+          }
+          &:hover{
+            background-color: #F5F5F5;
+            i, span{
+              color: #2F3339;
+            }
+          }
+        }
       }
       li.active{
-        span,i{
-          color: #2F3339;
-          font-weight: 400;
-        }
-        position: relative;
-        &::after{
-          content: "";
-          position: absolute;
-          right: 0;
-          top: 50%;
-          transform: translateY(-50%);
-          width: 3px;
-          height: 16px;
-          border-radius: 2px;
-          background-color: @link-color;
-        }
-      }
-      li:hover{
-        span,i{
-          color: #2F3339;
+        a{
+          background-color: #EEF3FB;
+          i, span{
+            color: @link-color;
+            font-weight: 500;
+          }
         }
       }
     }
@@ -399,7 +397,25 @@
       border-top: 1px solid #CCCCCC;
       //box-shadow: 2px 2px 2px #999999;
       ul {
-        padding-left: 30px;
+        padding: 8px 16px;
+      }
+    }
+    // 移动端统一横向布局（图标在左，文字在右），覆盖收起状态的纵向排列
+    &.is-collapsed .contents ul li,
+    &.is-expanded .contents ul li{
+      margin: 2px 0;
+      a{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: 10px;
+        i{
+          margin-right: 0;
+          font-size: 17px;
+        }
+        span{
+          font-size: 15px;
+        }
       }
     }
   }
