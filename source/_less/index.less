@@ -1,35 +1,44 @@
 
 @import "variables";
 
-// 主页的文章展示部分
+//主页的文章展示部分
 .post-preview{
   width: 100%;
   height: max-content;
-  margin-bottom: 10px;
+  margin-bottom: 16px;
   box-sizing: border-box;
   display: flex;
   flex-direction: row;
-  .post-time{
-    font-size: 17px;
-    color: #999999;
-    width: 125px;
-    font-weight: 300;
-    line-height: 24px;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 24px;
+  background-color: #FFFFFF;
+  border: 1px solid #EFEFEF;
+  border-radius: 8px;
+  transition: box-shadow @transitionTime, border-color @transitionTime;
+  &:hover{
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+    border-color: #DDDDDD;
   }
   .post-info{
-    flex:1;
+    flex: 1 1 auto;
+    min-width: 0;
+    order: 1;
     a {
       cursor: pointer;
       text-decoration: none;
       h3 {
-        line-height: 24px;
+        line-height: 26px;
         cursor: pointer;
         margin-top: 0;
-        margin-bottom: 5px;
-        color: #101010;
-        font-size: 18px;
-        font-weight: 300;
+        margin-bottom: 6px;
+        color: #1A1A1A;
+        font-size: 17px;
+        font-weight: 500;
         transition: color @transitionTime;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
       }
       h3:hover{
         color: @link-color;
@@ -37,13 +46,41 @@
     }
     p{
       margin-top: 0;
+      margin-bottom: 0;
       span,a{
         font-weight: 300;
-        color: #999999;
-        font-size: 14px;
+        color: #979797;
+        font-size: 13px;
         text-decoration: none;
       }
+      a.tag{
+        display: inline-block;
+        padding: 1px 8px;
+        border-radius: 999px;
+        background-color: #F5F5F5;
+        color: #777777;
+        font-size: 12px;
+        margin-right: 4px;
+        transition: background-color @transitionTime, color @transitionTime;
+        &:hover{
+          background-color: #E8E8E8;
+          color: #333333;
+        }
+      }
     }
+  }
+  .post-time{
+    font-size: 14px;
+    color: #AAAAAA;
+    min-width: 100px;
+    font-weight: 300;
+    line-height: 24px;
+    flex: 0 0 auto;
+    order: 2;
+    text-align: right;
+    margin-left: 16px;
+    font-variant-numeric: tabular-nums;
+    white-space: nowrap;
   }
 }
 
@@ -51,43 +88,124 @@
   min-height: 420px;
 }
 
-// 分页部分
+// 分页部分 - 现代胶囊卡片
 .pager{
   width: 100%;
-  height: 40px;
+  max-width: 620px;
+  margin: 48px auto 32px;
   padding-left: 0;
   display: flex;
-  .previous{
-    flex:1;
+  justify-content: space-between;
+  gap: 16px;
+  list-style: none;
+  li{
+    list-style: none;
     display: flex;
-    flex-direction: row;
-    cursor: pointer;
+    align-items: stretch;
+  }
+  .previous{
+    justify-content: flex-start;
   }
   .next{
-    flex: 1;
-    display: flex;
-    flex-direction: row-reverse;
-    cursor: pointer;
+    justify-content: flex-end;
   }
-  .previous,.next{
-    a{
-      box-sizing: border-box;
-      cursor: pointer;
-      transition: color @transitionTime, background-color @transitionTime;
-      border: 1px solid #999999;
-      line-height: 40px;
-      width: 150px;
-      height: 40px;
-      font-size: 18px;
-      color: #999999;
-      text-align: center;
-      text-decoration: none;
+  a{
+    box-sizing: border-box;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 14px 20px;
+    width: 100%;
+    max-width: 280px;
+    min-height: 64px;
+    border-radius: 999px;
+    border: 1px solid #E8E8E8;
+    background-color: #FAFAFA;
+    color: #4A4A4A;
+    text-decoration: none;
+    transition: color @transitionTime, background-color @transitionTime,
+                border-color @transitionTime, transform @transitionTime,
+                box-shadow @transitionTime;
+  }
+  .previous a{
+    flex-direction: row;
+    text-align: left;
+  }
+  .next a{
+    flex-direction: row-reverse;
+    text-align: right;
+  }
+  a:hover{
+    color: #2F3339;
+    background-color: #FFFFFF;
+    border-color: #979797;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06);
+  }
+  a:active{
+    transform: translateY(0);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+  }
+  .is-disabled{
+    opacity: 0.45;
+    pointer-events: none;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 14px 20px;
+    width: 100%;
+    max-width: 280px;
+    min-height: 64px;
+    border-radius: 999px;
+    border: 1px dashed #DDDDDD;
+    background-color: #FAFAFA;
+    color: #979797;
+    box-sizing: border-box;
+    &.next{
+      flex-direction: row-reverse;
+      text-align: right;
     }
-    a:hover{
-      color: white;
-      cursor: pointer;
-      background-color: #666666;
+  }
+  .pager-arrow{
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 34px;
+    height: 34px;
+    flex-shrink: 0;
+    border-radius: 50%;
+    background-color: #EFEFEF;
+    color: #666666;
+    transition: background-color @transitionTime, color @transitionTime;
+    svg{
+      display: block;
     }
+  }
+  a:hover .pager-arrow{
+    background-color: #979797;
+    color: #FFFFFF;
+  }
+  .pager-text{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    line-height: 1.2;
+    min-width: 0;
+  }
+  .pager-label{
+    font-size: 15px;
+    font-weight: 500;
+    color: #2F3339;
+    letter-spacing: 0.2px;
+  }
+  .pager-sub{
+    font-size: 12px;
+    color: #979797;
+    margin-top: 3px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 }
 
@@ -98,23 +216,20 @@
   .post-preview{
     width: 100%;
     height: max-content;
-    margin-bottom: 10px;
+    margin-bottom: 12px;
     box-sizing: border-box;
     display: flex;
-    flex-direction: column;
-    padding-left: 10px;
-    padding-right: 10px;
-    border-bottom: 1px solid #EEEEEE;
-    .post-time{
-      font-size: 11px;
-      color: #999999;
-      width: 125px;
-      font-weight: 300;
-      line-height: 20px;
-      font-style: oblique;
-    }
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 14px 16px;
+    background-color: #FFFFFF;
+    border: 1px solid #EFEFEF;
+    border-radius: 8px;
     .post-info{
-      flex:1;
+      flex: 1 1 auto;
+      min-width: 0;
+      order: 1;
       a {
         cursor: pointer;
         text-decoration: none;
@@ -122,14 +237,18 @@
           line-height: 20px;
           cursor: pointer;
           margin-top: 0;
-          margin-bottom: 5px;
+          margin-bottom: 4px;
           color: #101010;
           font-size: 15px;
-          font-weight: 300;
+          font-weight: 400;
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
         }
       }
       p{
         margin-top: 0;
+        margin-bottom: 0;
         span,a{
           font-weight: 300;
           color: #999999;
@@ -138,45 +257,54 @@
         }
       }
     }
+    .post-time{
+      font-size: 11px;
+      color: #AAAAAA;
+      min-width: auto;
+      font-weight: 300;
+      line-height: 20px;
+      flex: 0 0 auto;
+      order: 2;
+      text-align: right;
+      margin-left: 12px;
+      white-space: nowrap;
+      font-variant-numeric: tabular-nums;
+    }
   }
 
   .pager{
-    width: 100%;
-    height: 40px;
-    padding-left: 10px;
-    padding-right: 10px;
-    display: flex;
-    .previous{
-      flex:1;
-      display: flex;
-      flex-direction: row;
-      cursor: pointer;
+    margin: 32px 0 20px;
+    gap: 10px;
+    a{
+      max-width: none;
+      min-height: 52px;
+      padding: 10px 16px;
+      gap: 10px;
     }
-    .next{
-      flex: 1;
-      display: flex;
-      flex-direction: row-reverse;
-      cursor: pointer;
+    a:hover{
+      transform: none;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
     }
-    .previous,.next{
-      a{
-        box-sizing: border-box;
-        cursor: pointer;
-        transition: color @transitionTime, background-color @transitionTime;
-        border: 1px solid #999999;
-        line-height: 30px;
-        width: 120px;
-        height: 30px;
-        font-size: 14px;
-        color: #999999;
-        text-align: center;
-        text-decoration: none;
+    .is-disabled{
+      max-width: none;
+      min-height: 52px;
+      padding: 10px 16px;
+      gap: 10px;
+    }
+    .pager-arrow{
+      width: 28px;
+      height: 28px;
+      svg{
+        width: 16px;
+        height: 16px;
       }
-      a:hover{
-        color: white;
-        cursor: pointer;
-        background-color: #666666;
-      }
+    }
+    .pager-label{
+      font-size: 14px;
+    }
+    .pager-sub{
+      font-size: 11px;
+      margin-top: 2px;
     }
   }
 }

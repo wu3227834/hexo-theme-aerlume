@@ -5,9 +5,6 @@ layout: layout
 <div class="post-preview-container" style="min-height: <%- config.per_page * 72 %>px">
     <% page.posts.each(function(post){ %>
         <div class="post-preview">
-            <div class="post-time">
-                <%= post.date.format(config.date_format) %>
-            </div>
             <div class="post-info">
                 <a href="<%- full_url_for(post.path) %>">
                     <h3>
@@ -28,18 +25,61 @@ layout: layout
                                 <% } %>
                 </p>
             </div>
+            <div class="post-time">
+                <%= post.date.format(config.date_format) %>
+            </div>
         </div>
         <% }); %>
 </div>
 <ul class="pager">
     <% if (page.prev){ %>
         <li class="previous">
-            <a href="<%- config.root %><%- page.prev_link %>">&larr; Newer Posts</a>
+            <a href="<%- config.root %><%- page.prev_link %>" rel="prev">
+                <span class="pager-arrow" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+                </span>
+                <span class="pager-text">
+                    <span class="pager-label">上一页</span>
+                    <% if (page.current){ %>
+                    <span class="pager-sub">第 <%= page.current - 1 %> 页 / 共 <%= page.total || 1 %> 页</span>
+                    <% } %>
+                </span>
+            </a>
+        </li>
+        <% } else if (page.total && page.total > 1) { %>
+        <li class="previous is-disabled">
+            <span class="pager-arrow" aria-hidden="true">
+                <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+            </span>
+            <span class="pager-text">
+                <span class="pager-label">上一页</span>
+                <span class="pager-sub">已是第一页</span>
+            </span>
         </li>
         <% } %>
             <% if (page.next){ %>
                 <li class="next">
-                    <a href="<%- config.root %><%- page.next_link %>">Older Posts &rarr;</a>
+                    <a href="<%- config.root %><%- page.next_link %>" rel="next">
+                        <span class="pager-text">
+                            <span class="pager-label">下一页</span>
+                            <% if (page.current){ %>
+                            <span class="pager-sub">第 <%= page.current + 1 %> 页 / 共 <%= page.total || 1 %> 页</span>
+                            <% } %>
+                        </span>
+                        <span class="pager-arrow" aria-hidden="true">
+                            <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
+                        </span>
+                    </a>
+                </li>
+                <% } else if (page.total && page.total > 1) { %>
+                <li class="next is-disabled">
+                    <span class="pager-text">
+                        <span class="pager-label">下一页</span>
+                        <span class="pager-sub">已是最后一页</span>
+                    </span>
+                    <span class="pager-arrow" aria-hidden="true">
+                        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
+                    </span>
                 </li>
                 <% } %>
 </ul>
