@@ -1,27 +1,118 @@
 //主页自我介绍部分
 .nav{
   position: relative;
-  //top: 50px;
   padding-top: 50px;
   color:#333333;
   width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
+  // 展开过渡
+  .avatar-name,
+  .contents,
+  .toc-article{
+    transition: opacity @transitionTime, transform @transitionTime;
+  }
+
+  // ===== 展开状态 =====
+  &.is-expanded{
+    .avatar-name{
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      border-bottom: 1px solid #E8E8E8;
+      opacity: 1;
+      transform: none;
+    }
+    .contents{
+      display: block;
+      opacity: 1;
+      transform: none;
+    }
+    .toc-article{
+      display: block;
+      opacity: 1;
+      transform: none;
+    }
+    .nav-toggle-btn{
+      .nav-toggle-icon{
+        display: none;
+      }
+      .nav-toggle-icon-collapse{
+        display: inline-block;
+      }
+    }
+  }
+
+  // ===== 收起状态（默认） =====
+  &.is-collapsed{
+    .avatar-name{
+      display: none;
+      opacity: 0;
+      transform: translateY(-8px);
+    }
+    .contents{
+      ul{
+        width: auto;
+        margin-top: 12px;
+        margin-bottom: 12px;
+        li{
+          margin: 12px auto;
+          a{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 4px;
+            i{
+              margin-right: 0;
+              font-size: 18px;
+            }
+            span{
+              font-size: 11px;
+            }
+          }
+        }
+        li.active{
+          &::after{
+            display: none;
+          }
+        }
+      }
+    }
+    .toc-article{
+      display: none;
+    }
+    .nav-toggle-btn{
+      .nav-toggle-icon{
+        display: inline-block;
+      }
+      .nav-toggle-icon-collapse{
+        display: none;
+      }
+    }
+  }
+
   .avatar-name{
     display: flex;
     flex-direction: column;
     align-items: center;
-    border-bottom: 1px solid #979797;
+    border-bottom: 1px solid #E8E8E8;
     .avatar{
       width:120px;
       height:120px;
       padding: 10px;
-      //border: 1px solid #DDDDDD;
       box-sizing: border-box;
+      text-decoration: none;
+      display: block;
+      cursor: pointer;
       img{
         width: 100px;
         height: 100px;
+        transition: transform @transitionTime;
+        display: block;
+      }
+      img:hover{
+        transform: scale(1.05);
       }
     }
     .radius{
@@ -44,8 +135,8 @@
     ul{
       width: 100%;
       padding-left: 0;
-      margin-top: 25px;
-      margin-bottom: 25px;
+      margin-top: 20px;
+      margin-bottom: 20px;
       li,li a{
         text-decoration: none;
         font-size: 15px;
@@ -53,25 +144,66 @@
           cursor: pointer;
           color: #999999;
           margin-right: 5px;
+          transition: color @transitionTime;
         }
         span{
           cursor: pointer;
           color: #999999;
+          transition: color @transitionTime;
         }
-        margin: 20px auto;
+        margin: 14px auto;
         padding-left: 0;
         list-style: none;
       }
       li.active{
         span,i{
-          color: #4a4a4a;
+          color: #2F3339;
+          font-weight: 400;
+        }
+        position: relative;
+        &::after{
+          content: "";
+          position: absolute;
+          right: 0;
+          top: 50%;
+          transform: translateY(-50%);
+          width: 3px;
+          height: 16px;
+          border-radius: 2px;
+          background-color: @link-color;
         }
       }
       li:hover{
         span,i{
-          color: #4a4a4a;
+          color: #2F3339;
         }
       }
+    }
+  }
+
+  // 收起/展开切换按钮
+  .nav-toggle-btn{
+    position: absolute;
+    top: 12px;
+    right: 8px;
+    width: 30px;
+    height: 30px;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    padding: 6px;
+    border-radius: 6px;
+    color: #979797;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color @transitionTime, color @transitionTime;
+    svg{
+      display: block;
+    }
+    &:hover{
+      background-color: #F5F5F5;
+      color: #2F3339;
     }
   }
 }
@@ -98,7 +230,6 @@
 }
 
 .search-field{
-  //display: flex;
   overflow: hidden;
   display: none;
   position: fixed;
@@ -109,7 +240,7 @@
   right:0;
   width: 100vw;
   height: 100vh;
-  background-color: rgba(0,0,0,0.3);
+  background-color: rgba(0,0,0,0.35);
   align-items: center;
   flex-direction: column;
   .search-bg {
@@ -128,11 +259,15 @@
     height: 70vh;
     margin-top: 15vh;
     background-color: white;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
     .search-input{
       width: 100%;
       display: flex;
       align-items: center;
-      padding-top: 10px;
+      padding: 12px 0;
+      border-bottom: 1px solid #F0F0F0;
 
       span{
         width: 60px;
@@ -152,15 +287,21 @@
       }
       input{
         flex: 1;
-        background-color: #f3f4f7;
-        border: 1px solid #cccccc;
-        height:30px;
+        background-color: transparent;
+        border: none;
+        border-bottom: 2px solid #E8E8E8;
+        height:36px;
         font-size: 18px;
-        color: #4a4a4a;
+        color: #2F3339;
         box-sizing: border-box;
         font-weight: 300;
-        padding-left: 5px;
+        padding-left: 8px;
         padding-right: 5px;
+        outline: none;
+        transition: border-color @transitionTime;
+        &:focus{
+          border-bottom-color: @link-color;
+        }
       }
     }
   }
@@ -174,16 +315,16 @@
       height: 200px;
       text-align: center;
       padding-top: 100px;
-      color: #999999;
-      font-size: 16px;
+      color: #979797;
+      font-size: 15px;
     }
 
     &::-webkit-scrollbar-thumb {
-      background-color: #c3c4c7;
+      background-color: #D0D0D0;
       -webkit-border-radius: 2px;
       border-radius: 2px;
     }
-    height: calc(70vh - 50px);
+    height: calc(70vh - 60px);
     overflow-y: scroll;
     overflow-x: hidden;
     ul{
@@ -191,23 +332,33 @@
       width: calc(100% - 25px);
       padding-left: 10px;
       li{
-        margin-bottom: 15px;
+        margin-bottom: 12px;
+        padding: 8px 6px;
         list-style: none;
+        border-radius: 6px;
+        transition: background-color @transitionTime;
+        &:hover{
+          background-color: #F8F8F8;
+        }
         a{
           text-decoration: none;
           cursor: pointer;
-          font-size: 16px;
-          color: #4a4a4a;
-          font-weight: 300;
+          font-size: 15px;
+          color: #2F3339;
+          font-weight: 400;
           padding-bottom: 5px;
         }
         ul{
           padding-left: 10px;
           li{
             list-style: none;
-            color: #666666;
+            color: #979797;
             font-weight: 300;
             font-size: 13px;
+            padding: 2px 6px;
+            &:hover{
+              background-color: transparent;
+            }
           }
         }
       }
