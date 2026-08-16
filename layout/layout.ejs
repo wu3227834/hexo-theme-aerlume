@@ -38,14 +38,38 @@
     window.hexo_root = "<%- config.root %>"
     window.isPost = <%- is_post() %>
 </script>
-<%- js('js/jquery.min.js') %>
-<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-<%- js('js/prism.js') %>
-
-<!-- codecopy support -->
-<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js"></script>
-<%- js('js/clipboard.js') %>
 <%- js('js/index.js') %>
+
+<!-- 不蒜子统计 - 异步加载 -->
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<!-- Prism 代码高亮 - 仅文章页按需加载 -->
+<% if (is_post() || is_current('archive') || page.layout === 'page') { %>
+<%- js('js/prism.js') %>
+<% } %>
+
+<!-- 代码复制 - 按需延迟加载 -->
+<script>
+(function() {
+    function loadClipboard() {
+        if (document.querySelector('.highlight')) {
+            var s1 = document.createElement('script');
+            s1.src = 'https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js';
+            s1.onload = function() {
+                var s2 = document.createElement('script');
+                s2.src = '<%= url_for("js/clipboard.js") %>';
+                document.body.appendChild(s2);
+            };
+            document.body.appendChild(s1);
+        }
+    }
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', loadClipboard);
+    } else {
+        loadClipboard();
+    }
+})();
+</script>
 
 <!-- 评论系统 -->
 <% if (page.comments && config.comment) { %>
