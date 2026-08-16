@@ -43,11 +43,6 @@
 <!-- 不蒜子统计 - 异步加载 -->
 <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 
-<!-- Prism 代码高亮 - 仅文章页按需加载 -->
-<% if (is_post() || is_current('archive') || page.layout === 'page') { %>
-<%- js('js/prism.js') %>
-<% } %>
-
 <!-- 代码复制 - 按需延迟加载 -->
 <script>
 (function() {
@@ -71,85 +66,30 @@
 })();
 </script>
 
-<!-- 评论系统 -->
-<% if (page.comments && config.comment) { %>
-    <% if(config.comment.type === 'gitment') { %>
-        <%- js('js/gitment.js') %>
-        <script>
-            var gitment = new Gitment({
-                id: '<%- page.title %>',
-                owner: '<%- config.comment.owner %>',
-                repo: '<%- config.comment.repo %>',
-                oauth: {
-                    client_id: '<%- config.comment.id %>',
-                    client_secret: '<%- config.comment.secret %>',
-                },
-            })
-            gitment.render('comment-container')
-        </script>
-    <% } else if(config.comment.type === 'disqus') { %>
-        <script>
-            if( '<%- config.comment.url %>' || '<%- config.comment.identifier %>')
-            var disqus_config = function () {
-                this.page.url = '<%- config.comment.url %>';
-                this.page.identifier = '<%- config.comment.identifier %>';
-            };
-
-            (function() {
-                var d = document, s = d.createElement('script');
-                s.src = '<%- config.comment.script %>';
-                s.setAttribute('data-timestamp', +new Date());
-                (d.head || d.body).appendChild(s);
-            })();
-        </script>
-    <% } else if(config.comment.type === 'giscus') { %>
-        <%- config.comment.script %>
-    <% } else if(config.comment.type === 'livere') { %>
-        <script type="text/javascript">
-           (function() {
-               if (typeof LivereTower === 'function') { return; }
-
-               var j, d = document.getElementById('lv-container');
-               if (!d) { return; }
-
-               d.setAttribute('data-id','<%- config.comment.livere_id %>');
-               d.setAttribute('data-uid' , '<%- config.comment.livere_uid %>');
-
-               j = document.createElement('script');
-               j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
-               j.async = true;
-
-               d.appendChild(j);
-           })();
-        </script>
-        <noscript>为正常使用来必力评论功能请激活JavaScript</noscript>
-    <% } %>
+<!-- 图片灯箱 - 按需加载 -->
+<% if(theme.fancybox !== false && page.fancybox !== false) { %>
+<script>
+(function() {
+    function loadLightbox() {
+        var container = document.querySelector('.post-content') || document.querySelector('.index-middle');
+        if (container && container.querySelector('img')) {
+            var s = document.createElement('script');
+            s.src = '<%= url_for("js/lightbox.js") %>';
+            document.body.appendChild(s);
+        }
+    }
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', loadLightbox);
+    } else {
+        loadLightbox();
+    }
+})();
+</script>
 <% } %>
 
-<!-- fancybox 支持 - 按需加载 -->
-<% if(theme.fancybox === true && page.fancybox !== false) { %>
-<script>
-    document.addEventListener('DOMContentLoaded', function() {
-        setTimeout(function() {
-            var images = document.querySelectorAll('.index-middle img');
-            if (images.length > 0) {
-                var link = document.createElement('link');
-                link.rel = 'stylesheet';
-                link.href = '/js/fancybox/jquery.fancybox.min.css';
-                document.head.appendChild(link);
-                
-                var script1 = document.createElement('script');
-                script1.src = '/js/fancybox/jquery.fancybox.min.js';
-                script1.onload = function() {
-                    var script2 = document.createElement('script');
-                    script2.src = '/js/fancybox/wrapImage.js';
-                    document.body.appendChild(script2);
-                };
-                document.body.appendChild(script1);
-            }
-        }, 1000);
-    });
-</script>
+<!-- 评论系统 - giscus -->
+<% if (page.comments && config.comment && config.comment.type === 'giscus') { %>
+    <%- config.comment.script %>
 <% } %>
 
 </body>

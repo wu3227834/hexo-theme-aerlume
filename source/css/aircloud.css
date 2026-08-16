@@ -887,6 +887,40 @@ body {
   background-color: #4990E2;
   color: #FFFFFF;
 }
+.lightbox-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(0, 0, 0, 0.85);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.4s, visibility 0.4s;
+  cursor: zoom-out;
+}
+.lightbox-overlay .lightbox-img {
+  max-width: 92vw;
+  max-height: 88vh;
+  border-radius: 4px;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
+  cursor: zoom-out;
+}
+.lightbox-overlay .lightbox-hint {
+  position: absolute;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+  color: rgba(255, 255, 255, 0.55);
+  font-size: 12px;
+  font-weight: 300;
+  letter-spacing: 0.5px;
+}
+.lightbox-overlay.is-visible {
+  opacity: 1;
+  visibility: visible;
+}
 .post-container {
   width: 100%;
   height: max-content;
@@ -1987,7 +2021,4 @@ div.code-toolbar > .toolbar {
   .toc-article {
     display: none;
   }
-}
-.gitment-comment p {
-  text-indent: 0;
 }

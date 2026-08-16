@@ -120,9 +120,7 @@ friends:
 
 ### 评论系统
 
-#### Giscus（推荐）
-
-在 [giscus.app](https://giscus.app) 获取配置后：
+主题内置 giscus 评论支持。在 [giscus.app](https://giscus.app) 获取配置后：
 
 ```yaml
 comment:
@@ -142,34 +140,6 @@ comment:
           crossorigin="anonymous"
           async>
       </script>
-```
-
-#### Gitment
-
-```yaml
-comment:
-  type: gitment
-  id: your-client-id
-  secret: your-client-secret
-  owner: your-github-username
-  repo: your-repo
-```
-
-#### Disqus
-
-```yaml
-comment:
-  type: disqus
-  script: 'https://your-site.disqus.com/embed.js'
-```
-
-#### Livere
-
-```yaml
-comment:
-  type: livere
-  livere_id: 'city'
-  livere_uid: your-uid
 ```
 
 ### 站点分析
@@ -215,7 +185,6 @@ my-aircloud/
 │   ├── archive.ejs        # 归档页
 │   ├── about.ejs          # 关于页
 │   ├── 404.ejs            # 404 页面
-│   ├── collect.ejs        # 归档/标签页通用模板
 │   └── _partial/
 │       ├── head.ejs       # <head> 标签
 │       ├── footer.ejs     # 底部区域
@@ -226,6 +195,7 @@ my-aircloud/
 ├── source/
 │   ├── css/               # 编译后的样式
 │   └── js/                # 脚本文件
+│       └── lightbox.js    # 原生图片灯箱
 └── source/
     └── _less/             # Less 源文件
         ├── index.less     # 首页样式
@@ -260,7 +230,7 @@ npx lessc source/css/aircloud.less source/css/aircloud.css
 - 文章不要跳级使用标题（如 h3 下直接 h5），否则目录可能异常
 - 代码块自动启用行号和复制按钮，无需额外配置
 - 侧边栏默认收起，点击左上角按钮可展开，状态会被记住
-- 图片 Fancybox 需在配置中开启 `fancybox: true`，默认关闭
+- 图片点击放大为原生实现（`js/lightbox.js`），无第三方依赖；文章 front-matter 中设置 `fancybox: false` 可单独关闭
 
 ## 许可
 

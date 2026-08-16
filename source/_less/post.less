@@ -1,5 +1,41 @@
 @import "variables";
 
+// 原生图片灯箱
+.lightbox-overlay{
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(0, 0, 0, 0.85);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity @transitionTime, visibility @transitionTime;
+  cursor: zoom-out;
+  .lightbox-img{
+    max-width: 92vw;
+    max-height: 88vh;
+    border-radius: 4px;
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
+    cursor: zoom-out;
+  }
+  .lightbox-hint{
+    position: absolute;
+    bottom: 24px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: rgba(255, 255, 255, 0.55);
+    font-size: 12px;
+    font-weight: 300;
+    letter-spacing: 0.5px;
+  }
+  &.is-visible{
+    opacity: 1;
+    visibility: visible;
+  }
+}
+
 .post-container{
   width: 100%;
   height: max-content;
