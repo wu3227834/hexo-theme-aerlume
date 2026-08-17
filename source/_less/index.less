@@ -5,20 +5,22 @@
 .post-preview{
   width: 100%;
   height: max-content;
-  margin-bottom: 16px;
+  margin-bottom: 0;
   box-sizing: border-box;
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
-  padding: 20px 24px;
-  background-color: #FFFFFF;
-  border: 1px solid #EFEFEF;
-  border-radius: 8px;
-  transition: box-shadow @transitionTime, border-color @transitionTime;
+  padding: 15px 4px;
+  background-color: transparent;
+  border: 0;
+  border-bottom: 1px solid #ECECEC;
+  border-radius: 0;
+  transition: background-color @transitionTime, padding @transitionTime;
   &:hover{
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
-    border-color: #DDDDDD;
+    background-color: #FAFBFC;
+    padding-left: 12px;
+    padding-right: 12px;
   }
   .post-info{
     flex: 1 1 auto;
@@ -28,12 +30,12 @@
       cursor: pointer;
       text-decoration: none;
       h3 {
-        line-height: 26px;
+        line-height: 24px;
         cursor: pointer;
         margin-top: 0;
-        margin-bottom: 6px;
+        margin-bottom: 4px;
         color: #1A1A1A;
-        font-size: 17px;
+        font-size: 16px;
         font-weight: 500;
         transition: color @transitionTime;
         white-space: nowrap;
@@ -72,31 +74,32 @@
   .post-time{
     font-size: 14px;
     color: #AAAAAA;
-    min-width: 100px;
+    min-width: 92px;
     font-weight: 300;
     line-height: 24px;
     flex: 0 0 auto;
     order: 2;
     text-align: right;
-    margin-left: 16px;
+    margin-left: 14px;
     font-variant-numeric: tabular-nums;
     white-space: nowrap;
   }
 }
 
 .post-preview-container{
-  min-height: 420px;
+  min-height: 360px;
+  border-top: 1px solid #ECECEC;
 }
 
 // 分页部分 - 现代胶囊卡片
 .pager{
-  width: 100%;
-  max-width: 620px;
-  margin: 48px auto 32px;
+  width: auto;
+  max-width: none;
+  margin: 30px 0 20px;
   padding-left: 0;
   display: flex;
   justify-content: space-between;
-  gap: 16px;
+  gap: 8px;
   list-style: none;
   li{
     list-style: none;
@@ -114,19 +117,17 @@
     cursor: pointer;
     display: flex;
     align-items: center;
-    gap: 14px;
-    padding: 14px 20px;
-    width: 100%;
-    max-width: 280px;
-    min-height: 64px;
-    border-radius: 999px;
-    border: 1px solid #E8E8E8;
-    background-color: #FAFAFA;
+    gap: 8px;
+    padding: 8px 11px;
+    width: auto;
+    max-width: none;
+    min-height: 36px;
+    border-radius: 6px;
+    border: 1px solid transparent;
+    background-color: transparent;
     color: #4A4A4A;
     text-decoration: none;
-    transition: color @transitionTime, background-color @transitionTime,
-                border-color @transitionTime, transform @transitionTime,
-                box-shadow @transitionTime;
+    transition: color @transitionTime, background-color @transitionTime, border-color @transitionTime;
   }
   .previous a{
     flex-direction: row;
@@ -138,28 +139,25 @@
   }
   a:hover{
     color: #2F3339;
-    background-color: #FFFFFF;
-    border-color: #979797;
-    transform: translateY(-2px);
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06);
+    background-color: #F3F5F7;
+    border-color: #E5E7EB;
   }
   a:active{
-    transform: translateY(0);
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+    background-color: #EDEFF2;
   }
   .is-disabled{
     opacity: 0.45;
     pointer-events: none;
     display: flex;
     align-items: center;
-    gap: 14px;
-    padding: 14px 20px;
-    width: 100%;
-    max-width: 280px;
-    min-height: 64px;
-    border-radius: 999px;
-    border: 1px dashed #DDDDDD;
-    background-color: #FAFAFA;
+    gap: 8px;
+    padding: 8px 11px;
+    width: auto;
+    max-width: none;
+    min-height: 36px;
+    border-radius: 6px;
+    border: 1px solid transparent;
+    background-color: transparent;
     color: #979797;
     box-sizing: border-box;
     &.next{
@@ -171,11 +169,11 @@
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    width: 34px;
-    height: 34px;
+    width: 20px;
+    height: 20px;
     flex-shrink: 0;
     border-radius: 50%;
-    background-color: #EFEFEF;
+    background-color: transparent;
     color: #666666;
     transition: background-color @transitionTime, color @transitionTime;
     svg{
@@ -183,8 +181,8 @@
     }
   }
   a:hover .pager-arrow{
-    background-color: #979797;
-    color: #FFFFFF;
+    background-color: transparent;
+    color: @link-color;
   }
   .pager-text{
     display: flex;
@@ -194,15 +192,13 @@
     min-width: 0;
   }
   .pager-label{
-    font-size: 15px;
+    font-size: 13px;
     font-weight: 500;
     color: #2F3339;
     letter-spacing: 0.2px;
   }
   .pager-sub{
-    font-size: 12px;
-    color: #979797;
-    margin-top: 3px;
+    display: none;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -216,16 +212,17 @@
   .post-preview{
     width: 100%;
     height: max-content;
-    margin-bottom: 12px;
+    margin-bottom: 0;
     box-sizing: border-box;
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
-    padding: 14px 16px;
-    background-color: #FFFFFF;
-    border: 1px solid #EFEFEF;
-    border-radius: 8px;
+    padding: 12px 2px;
+    background-color: transparent;
+    border: 0;
+    border-bottom: 1px solid #ECECEC;
+    border-radius: 0;
     .post-info{
       flex: 1 1 auto;
       min-width: 0;
@@ -277,8 +274,8 @@
     gap: 10px;
     a{
       max-width: none;
-      min-height: 52px;
-      padding: 10px 16px;
+      min-height: 36px;
+      padding: 8px 10px;
       gap: 10px;
     }
     a:hover{
@@ -287,8 +284,8 @@
     }
     .is-disabled{
       max-width: none;
-      min-height: 52px;
-      padding: 10px 16px;
+      min-height: 36px;
+      padding: 8px 10px;
       gap: 10px;
     }
     .pager-arrow{

@@ -2,9 +2,9 @@
 layout: layout
 ---
 
-<div class="post-preview-container" style="min-height: <%- config.per_page * 72 %>px">
+<section class="post-preview-container" aria-label="文章列表" style="min-height: <%- config.per_page * 64 %>px">
     <% page.posts.each(function(post){ %>
-        <div class="post-preview">
+        <article class="post-preview">
             <div class="post-info">
                 <a href="<%- full_url_for(post.path) %>">
                     <h3>
@@ -28,9 +28,9 @@ layout: layout
             <div class="post-time">
                 <%= post.date.format(config.date_format) %>
             </div>
-        </div>
+        </article>
         <% }); %>
-</div>
+</section>
 <ul class="pager">
     <% if (page.prev){ %>
         <li class="previous">
