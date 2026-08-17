@@ -17,7 +17,7 @@
 
 <div class="index-container">
     <% if(!is_current('/404')){%>
-    <div class="index-left">
+    <div class="index-left is-collapsed">
         <%- partial('_partial/nav', null, {cache: false}) %>
         <div class="index-about-mobile">
             <i> <%= config.subtitle %> </i>

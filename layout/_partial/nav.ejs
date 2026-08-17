@@ -53,10 +53,10 @@
             </li>
             <%if(config.search && config.search.path){%>
             <li>
-                <a id="search">
+                <button id="search" type="button" aria-label="搜索文章" aria-haspopup="dialog">
                     <i class="iconfont icon-sousuo1"></i>
                     <span><%= __('nav.search') %></span>
-                </a>
+                </button>
             </li>
             <% } %>
         </ul>
@@ -70,13 +70,13 @@
 </div>
 
 
-<div class="search-field" id="search-field">
+<div class="search-field" id="search-field" role="dialog" aria-modal="true" aria-label="搜索文章">
     <div class="search-bg" id="search-bg"></div>
     <div class="search-container">
         <div class="search-input">
-            <span id="esc-search"> <i class="icon-fanhui iconfont"></i></span>
-            <input id="search-input"/>
-            <span id="begin-search"><%= __('search.search') %></span>
+            <button id="esc-search" type="button" aria-label="关闭搜索"><i class="icon-fanhui iconfont"></i></button>
+            <input id="search-input" type="search" placeholder="输入关键词，按 Enter 搜索" autocomplete="off"/>
+            <button id="begin-search" type="button"><%= __('search.search') %></button>
         </div>
         <div class="search-result-container" id="search-result-container">
 
