@@ -1,8 +1,28 @@
 @import "variables";
 
 .toc-article{
-
   width: 240px;
+  padding: 12px 0 8px;
+  border-top: 1px solid #E8E8E8;
+
+  .toc-heading{
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 0 12px 10px;
+    color: #2F3339;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    &::before{
+      content: "";
+      width: 3px;
+      height: 12px;
+      border-radius: 2px;
+      background: @link-color;
+    }
+  }
 
   &::-webkit-scrollbar {
     width: 0;
@@ -17,24 +37,24 @@
   .toc-title{
   }
   ol{
-    padding-left: 10px;
-    padding-right: 10px;
+    padding: 0 8px;
     cursor: pointer;
     font-size: 0;
   }
   li{
     font-size: 0;
     box-sizing: border-box;
-    border-left: 2px solid #cccccc;
+    border-left: 1px solid #E5E7EB;
     list-style: none;
-    padding-left: 10px;
+    padding-left: 12px;
     a{
       display: block;
-      line-height: 20px;
-      margin-bottom: 10px;
+      line-height: 19px;
+      margin-bottom: 7px;
       text-decoration: none;
-      color: #999999;
-      font-size: 14px;
+      color: #8A9099;
+      font-size: 13px;
+      transition: color @transitionTime;
       span{
         word-break: break-all;
       }
