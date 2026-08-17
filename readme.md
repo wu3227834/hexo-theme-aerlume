@@ -11,6 +11,7 @@
 - 💬 **评论系统** — 支持 Giscus / Gitment / Disqus / Livere
 - 📊 **访问统计** — PV / UV 统计 + 第三方分析（Google / Baidu / Cloudflare 等）
 - 🌙 **代码高亮** — Prism.js 支持，一键复制 / 查看源码
+- 🔤 **离线字体** — 本地字体文件加载，`font-display` 可配置，无外部字体服务依赖
 - ⚡ **性能优化** — 零 jQuery 依赖，CSS/JS 按需加载，资源预连接
 
 ## 🚀 快速开始
@@ -72,8 +73,8 @@ comments: true
 ### 基础配置
 
 ```yaml
-# 语言
-language: zh-CN
+# 语言（需匹配主题 languages/ 下的文件名：zh / en / ko）
+language: zh
 
 # 日期格式
 date_format: YYYY-MM-DD
@@ -91,6 +92,21 @@ sidebar-avatar: avatar.png
 avatar_style:
   radius: true
 ```
+
+### 离线字体
+
+将字体文件（支持 woff / woff2 / ttf / otf）放入 `source/fonts/` 后配置：
+
+```yaml
+font:
+  family: AirCloud Local   # @font-face 的 font-family 名称
+  file: auto               # auto = 自动加载目录下第一个字体文件，也可指定文件名
+  weight: 400              # 字体粗细
+  style: normal            # 字体样式（normal / italic / oblique）
+  display: swap            # 显示模式（auto / block / fallback / optional / swap）
+```
+
+主题通过 `scripts/local-font.js` 生成 `@font-face`，并以 CSS 变量 `--aircloud-local-font` 应用到全站正文。
 
 ### 社交链接
 
@@ -177,6 +193,9 @@ donate:
 
 ```
 my-aircloud/
+├── languages/             # i18n 语言文件（zh / en / ko）
+├── scripts/
+│   └── local-font.js      # 离线字体 helper
 ├── layout/
 │   ├── index.ejs          # 首页文章列表
 │   ├── post.ejs           # 文章详情页
@@ -188,24 +207,26 @@ my-aircloud/
 │   └── _partial/
 │       ├── head.ejs       # <head> 标签
 │       ├── footer.ejs     # 底部区域
-│       ├── nav.ejs        # 侧边导航
+│       ├── nav.ejs        # 侧边导航与搜索
 │       ├── toc.ejs        # 文章目录
 │       ├── donate.ejs     # 赞赏按钮
 │       └── analytics.ejs  # 统计脚本
-├── source/
-│   ├── css/               # 编译后的样式
-│   └── js/                # 脚本文件
-│       └── lightbox.js    # 原生图片灯箱
 └── source/
+    ├── css/               # aircloud.less 为编译入口，aircloud.css 为编译产物
+    ├── fonts/             # 离线字体目录
+    ├── js/                # 脚本文件
+    │   └── lightbox.js    # 原生图片灯箱
     └── _less/             # Less 源文件
+        ├── common.less    # 全局基础样式
+        ├── layout.less    # 布局样式
         ├── index.less     # 首页样式
         ├── nav.less       # 导航样式
         ├── post.less      # 文章页样式
-        ├── layout.less    # 布局样式
+        ├── tag.less       # 标签页样式
+        ├── toc.less       # 目录样式
         ├── hightlight.less# 代码高亮样式
-        ├── _partial/
-        │   └── footer.less# 底部样式
-        └── ...
+        └── _partial/
+            └── footer.less# 底部样式
 ```
 
 ## 🎨 自定义
@@ -230,7 +251,7 @@ npx lessc source/css/aircloud.less source/css/aircloud.css
 - 文章不要跳级使用标题（如 h3 下直接 h5），否则目录可能异常
 - 代码块自动启用行号和复制按钮，无需额外配置
 - 侧边栏默认收起，点击左上角按钮可展开，状态会被记住
-- 图片点击放大为原生实现（`js/lightbox.js`），无第三方依赖；文章 front-matter 中设置 `fancybox: false` 可单独关闭
+- 图片点击放大为原生实现（`js/lightbox.js`），无第三方依赖；主题配置或文章 front-matter 中设置 `fancybox: false` 可关闭
 
 ## 许可
 
