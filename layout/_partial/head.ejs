@@ -105,6 +105,8 @@ var updatedTime = page.updated ? page.updated.toISOString() : (page.date ? page.
     <!-- 关键 CSS：主样式同步加载 -->
     <%- css('css/aircloud.css') %>
 
+    <%- local_font() %>
+
     <!-- iconfont 异步加载 -->
     <link rel="preload" href="https://at.alicdn.com/t/font_620856_28hi1hpxx24.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
     <noscript><link rel="stylesheet" href="https://at.alicdn.com/t/font_620856_28hi1hpxx24.css"></noscript>

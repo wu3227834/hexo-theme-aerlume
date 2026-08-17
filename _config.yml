@@ -1,5 +1,16 @@
 __: aircloud
 
-############################### fancybox ############################### > start
-fancybox: true
-############################### fancybox ############################### > end
+# 离线字体
+# @目录: source/fonts/
+# @file: auto 会自动加载该目录的第一个字体文件
+# @family: 文件名
+# @weight: 字体粗细
+# @style: 字体样式
+# @display: 字体显示模式
+
+font:
+  family: AirCloud Local
+  file: TsangerYuYangT_W03_W03.ttf
+  weight: 400
+  style: normal
+  display: swap
