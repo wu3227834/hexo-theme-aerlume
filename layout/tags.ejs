@@ -1,12 +1,18 @@
 <% page.comments = false %>
 
-<div id='tag_cloud' class="tags">
+<header class="tag-page-header">
+    <p class="tag-page-eyebrow">浏览主题</p>
+    <h1>标签</h1>
+    <p class="tag-page-description">按主题探索 <%= site.tags.length %> 个标签与文章。</p>
+</header>
+
+<nav id='tag_cloud' class="tags" aria-label="标签索引">
     <% site.tags.map(a => a.name).sort((a, b) => {
         return a.localeCompare(b, 'zh-Hans-CN', {sensitivity: 'accent'})
     }).map(function(tag){  %>
     <a href="#<%= tag %>" class="tag-triangle" title="<%= tag %>"><i class="tag-i"><%= tag %></i></a>
     <% }) %>
-</div>
+</nav>
 
 <!-- 标签列表 -->
 
@@ -18,7 +24,7 @@
 }).sort((a, b) => {
     return a.name.localeCompare(b.name, 'zh-Hans-CN', {sensitivity: 'accent'})
 }).map(function(tag){  %>
-<div class="one-tag-list">
+<section class="one-tag-list">
                 <span class="listing-seperator" id="<%= tag.name %>">
                     <span class="tag-text"><%= tag.name %></span>
                 </span>
@@ -27,7 +33,7 @@
     <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
     <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
     </li> -->
-    <div class="post-preview">
+    <article class="post-preview">
         <a href="<%- config.root %><%- post.path %>">
             <h2 class="post-title">
                 <%- (post.title || "Untitled").replace(/[<>&"]/g,function(c){
@@ -41,7 +47,7 @@
             <% } %>
         </a>
         <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
-    </div>
+    </article>
     <% }) %>
-</div>
+</section>
 <% }) %>
