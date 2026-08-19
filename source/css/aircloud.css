@@ -498,7 +498,6 @@ body {
   .nav .avatar-name {
     display: none !important;
   }
-  .nav .contents,
   .nav .toc-article {
     display: none !important;
   }
@@ -1609,8 +1608,11 @@ body {
   }
   .index-about-mobile {
     display: block;
+    align-self: stretch;
+    flex: 0 0 auto;
     text-align: center;
     width: 100%;
+    box-sizing: border-box;
     margin-top: 2px;
     margin-bottom: 22px;
   }
