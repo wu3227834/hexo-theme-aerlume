@@ -410,15 +410,17 @@
     .contents {
       display: none;
       position: fixed;
-      left: 0;
-      top: 40px;
+      left: 12px;
+      right: 12px;
+      top: 48px;
       background-color: white;
-      width: 100%;
-      border-bottom: 1px solid #CCCCCC;
-      border-top: 1px solid #CCCCCC;
-      //box-shadow: 2px 2px 2px #999999;
+      width: auto;
+      border: 1px solid #E5E7EB;
+      border-radius: 12px;
+      box-shadow: 0 14px 35px rgba(31, 41, 55, 0.14);
+      z-index: 20;
       ul {
-        padding: 8px 16px;
+        padding: 8px;
       }
     }
     // 移动端统一横向布局（图标在左，文字在右），覆盖收起状态的纵向排列
@@ -442,15 +444,38 @@
   }
 
   .site-nav-toggle {
-    height: 40px;
+    height: 48px;
     box-sizing: border-box;
     display: block;
     position: fixed;
     width: 100%;
-    padding-top: 2px;
-    padding-left: 20px;
-    z-index: 2;
-    background-color: white;
+    top: 0;
+    left: 0;
+    padding: 6px 12px;
+    z-index: 30;
+    background-color: rgba(255, 255, 255, 0.94);
+    border-bottom: 1px solid #F0F2F5;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    button {
+      width: 40px;
+      height: 36px;
+      margin: 0;
+      padding: 7px 9px;
+      border-radius: 9px;
+      &:focus-visible {
+        outline: 2px solid @link-color;
+        outline-offset: 2px;
+      }
+      .btn-bar {
+        width: 22px;
+        height: 2px;
+        background: #3F4650;
+      }
+    }
+  }
+
+  .nav .nav-toggle-btn {
+    display: none;
   }
 }
-
