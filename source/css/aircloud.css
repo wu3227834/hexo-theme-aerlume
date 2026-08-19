@@ -490,13 +490,17 @@ body {
     height: calc(100vh - 50px);
   }
   .nav {
-    margin-top: 50px;
+    margin-top: 48px;
     position: relative;
     top: 0;
     width: 100%;
   }
   .nav .avatar-name {
-    border-bottom: none;
+    display: none !important;
+  }
+  .nav .contents,
+  .nav .toc-article {
+    display: none !important;
   }
   .nav .contents {
     display: none;
@@ -1607,14 +1611,16 @@ body {
     display: block;
     text-align: center;
     width: 100%;
-    margin-top: 0;
-    margin-bottom: 40px;
+    margin-top: 2px;
+    margin-bottom: 22px;
   }
   .index-about-mobile i {
-    font-size: 15px;
+    display: block;
+    font-size: 16px;
     font-family: "italic" !important;
     font-weight: 300;
     color: #444444;
+    letter-spacing: 0.02em;
   }
 }
 @media (prefers-reduced-motion: reduce) {
@@ -2429,7 +2435,7 @@ pre .javascript .function {
 }
 @media screen and (max-width: 680px) {
   .toc-mobile {
-    display: block;
+    display: none !important;
     width: 100%;
     margin: 0 0 24px;
     padding: 0;
