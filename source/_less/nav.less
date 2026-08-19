@@ -421,6 +421,10 @@
       ul {
         padding: 8px;
       }
+      &.is-mobile-open{
+        display: block !important;
+        animation: showBlock @transitionTime forwards;
+      }
     }
     // 移动端统一横向布局（图标在左，文字在右），覆盖收起状态的纵向排列
     &.is-collapsed .contents ul li,
@@ -470,7 +474,17 @@
         width: 22px;
         height: 2px;
         background: #3F4650;
+        transition: transform @transitionTime, opacity @transitionTime;
       }
+    }
+    &.is-open button .btn-bar:nth-child(1){
+      transform: translateY(6px) rotate(45deg);
+    }
+    &.is-open button .btn-bar:nth-child(2){
+      opacity: 0;
+    }
+    &.is-open button .btn-bar:nth-child(3){
+      transform: translateY(-6px) rotate(-45deg);
     }
   }
 

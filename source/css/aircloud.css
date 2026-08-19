@@ -517,6 +517,10 @@ body {
   .nav .contents ul {
     padding: 8px;
   }
+  .nav .contents.is-mobile-open {
+    display: block !important;
+    animation: showBlock 240ms cubic-bezier(0.4, 0, 0.2, 1) forwards;
+  }
   .nav.is-collapsed .contents ul li,
   .nav.is-expanded .contents ul li {
     margin: 2px 0;
@@ -573,6 +577,16 @@ body {
     width: 22px;
     height: 2px;
     background: #3F4650;
+    transition: transform 240ms cubic-bezier(0.4, 0, 0.2, 1), opacity 240ms cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  .site-nav-toggle.is-open button .btn-bar:nth-child(1) {
+    transform: translateY(6px) rotate(45deg);
+  }
+  .site-nav-toggle.is-open button .btn-bar:nth-child(2) {
+    opacity: 0;
+  }
+  .site-nav-toggle.is-open button .btn-bar:nth-child(3) {
+    transform: translateY(-6px) rotate(-45deg);
   }
   .nav .nav-toggle-btn {
     display: none;
@@ -1608,13 +1622,11 @@ body {
   }
   .index-about-mobile {
     display: block;
-    align-self: stretch;
-    flex: 0 0 auto;
     text-align: center;
-    width: 100%;
+    width: 100vw;
     box-sizing: border-box;
-    margin-top: 2px;
-    margin-bottom: 22px;
+    margin: 0;
+    padding: 24px 16px 22px;
   }
   .index-about-mobile i {
     display: block;
