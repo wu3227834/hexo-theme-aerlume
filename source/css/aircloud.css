@@ -1307,13 +1307,41 @@ body {
   color: #2f3339;
   font-weight: 300;
 }
-.post-content > table,
-.post-content > table tr th,
-.post-content > table tr td {
-  border: 1px solid #e7e8e9;
-}
+/* 表格：卡片式容器 + 横线分隔（兼容加密文章的 .hbe-decrypted-content 容器） */
 .post-content table {
+  display: block;
+  width: fit-content;
+  max-width: 100%;
+  margin: 1.5em auto;
+  overflow-x: auto;
+  border: 1px solid #ebedf0;
+  border-radius: 8px;
   border-collapse: collapse;
+  text-indent: 0;
+  font-size: 14px;
+  line-height: 1.6;
+  -webkit-overflow-scrolling: touch;
+}
+.post-content table th,
+.post-content table td {
+  padding: 9px 16px;
+  text-indent: 0;
+  border: none;
+  border-bottom: 1px solid #eff1f4;
+}
+.post-content table th {
+  background-color: #f8fafe;
+  font-weight: 500;
+  border-bottom: 2px solid #4990e2;
+}
+.post-content table tbody tr:nth-child(even) td {
+  background-color: #fafbfd;
+}
+.post-content table tbody tr:hover td {
+  background-color: #f0f6ff;
+}
+.post-content table tbody tr:last-child td {
+  border-bottom: none;
 }
 .post-content blockquote {
   border-top: none;
@@ -2362,6 +2390,9 @@ pre .javascript .function {
   width: 240px;
   padding: 12px 0 8px;
   border-top: 1px solid #E8E8E8;
+}
+.toc-article.toc-encrypted {
+  display: none;
 }
 .toc-article .toc-heading {
   display: flex;
