@@ -5,6 +5,11 @@
   padding: 12px 0 8px;
   border-top: 1px solid #E8E8E8;
 
+  &[hidden],
+  &.toc-encrypted{
+    display: none !important;
+  }
+
   .toc-heading{
     display: flex;
     align-items: center;
@@ -108,7 +113,7 @@
 
 @media screen and (max-width: 680px){
   .toc-mobile{
-    display: none !important;
+    display: block;
     width: 100%;
     margin: 0 0 24px;
     padding: 0;

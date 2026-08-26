@@ -1,4 +1,4 @@
-<div id="<%= item && item.toc_mobile ? 'toc-mobile' : 'toc' %>" class="toc-article<%= item && item.toc_mobile ? ' toc-mobile' : '' %><%= item && item.encrypt ? ' toc-encrypted' : '' %>">
+<div id="<%= item && item.toc_mobile ? 'toc-mobile' : 'toc' %>" class="toc-article<%= item && item.toc_mobile ? ' toc-mobile' : '' %><%= item && item.encrypt ? ' toc-encrypted' : '' %>"<%= item && item.encrypt ? ' hidden' : '' %>>
     <div class="toc-heading">
         <span>目录</span>
         <% if (item && item.toc_mobile) { %>
