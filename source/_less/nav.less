@@ -425,6 +425,9 @@
         display: block !important;
         animation: showBlock @transitionTime forwards;
       }
+      &[hidden]{
+        display: none !important;
+      }
     }
     // 移动端统一横向布局（图标在左，文字在右），覆盖收起状态的纵向排列
     &.is-collapsed .contents ul li,

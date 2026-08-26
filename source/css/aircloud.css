@@ -521,6 +521,9 @@ body {
     display: block !important;
     animation: showBlock 240ms cubic-bezier(0.4, 0, 0.2, 1) forwards;
   }
+  .nav .contents[hidden] {
+    display: none !important;
+  }
   .nav.is-collapsed .contents ul li,
   .nav.is-expanded .contents ul li {
     margin: 2px 0;
@@ -2391,8 +2394,9 @@ pre .javascript .function {
   padding: 12px 0 8px;
   border-top: 1px solid #E8E8E8;
 }
+.toc-article[hidden],
 .toc-article.toc-encrypted {
-  display: none;
+  display: none !important;
 }
 .toc-article .toc-heading {
   display: flex;
@@ -2480,7 +2484,7 @@ pre .javascript .function {
 }
 @media screen and (max-width: 680px) {
   .toc-mobile {
-    display: none !important;
+    display: block;
     width: 100%;
     margin: 0 0 24px;
     padding: 0;
