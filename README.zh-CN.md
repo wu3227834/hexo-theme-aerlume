@@ -29,6 +29,15 @@
 
 ### 1. 安装
 
+通过 npm 安装：
+
+```bash
+cd your-hexo-site
+npm install hexo-theme-aerlume --save
+```
+
+也可以直接从 GitHub 安装：
+
 ```bash
 # 克隆到 themes 目录
 cd your-hexo-site/themes

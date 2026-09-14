@@ -11,6 +11,15 @@ Original project:
 
 ## Quick Start
 
+Install from npm:
+
+```bash
+cd your-hexo-site
+npm install hexo-theme-aerlume --save
+```
+
+Or install directly from GitHub:
+
 ```bash
 cd your-hexo-site/themes
 git clone https://github.com/wu3227834/hexo-theme-aerlume.git hexo-theme-aerlume
