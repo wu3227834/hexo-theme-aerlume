@@ -65,7 +65,7 @@ See [`README.zh-CN.md`](README.zh-CN.md) for the full configuration reference.
 Edit Less sources under `source/_less/` and rebuild the compiled stylesheet:
 
 ```bash
-npx lessc source/css/aircloud.less source/css/aircloud.css
+npx lessc source/css/aerlume.less source/css/aerlume.css
 ```
 
 Verify the theme in a Hexo site:

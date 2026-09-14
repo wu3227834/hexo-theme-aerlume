@@ -11,7 +11,7 @@ hexo.extend.helper.register('local_font', function () {
   const requested = typeof settings.file === 'string' ? settings.file.trim() : 'auto';
   const family = typeof settings.family === 'string' && settings.family.trim()
     ? settings.family.trim()
-    : 'AirCloud Local';
+    : 'Aerlume Local';
   const fontDirectory = path.resolve(this.view_dir, '..', 'source', 'fonts');
 
   let file = '';
@@ -30,5 +30,5 @@ hexo.extend.helper.register('local_font', function () {
   const display = ['auto', 'block', 'fallback', 'optional', 'swap'].includes(settings.display) ? settings.display : 'swap';
   const escapedFamily = cssEscape(family);
 
-  return `<style>@font-face{font-family:'${escapedFamily}';src:url('${this.url_for(`fonts/${file}`)}') format('${format}');font-style:${style};font-weight:${weight};font-display:${display}}:root{--aircloud-local-font:'${escapedFamily}'}</style>`;
+  return `<style>@font-face{font-family:'${escapedFamily}';src:url('${this.url_for(`fonts/${file}`)}') format('${format}');font-style:${style};font-weight:${weight};font-display:${display}}:root{--aerlume-local-font:'${escapedFamily}'}</style>`;
 });

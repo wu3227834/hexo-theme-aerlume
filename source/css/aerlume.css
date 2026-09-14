@@ -1,6 +1,6 @@
 /*varibles*/
 * {
-  font-family: var(--aircloud-local-font, "italic"), Helvetica, Arial, "Heiti SC", "SimSun";
+  font-family: var(--aerlume-local-font, "italic"), Helvetica, Arial, "Heiti SC", "SimSun";
 }
 body,
 html {

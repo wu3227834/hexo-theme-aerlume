@@ -1,11 +1,11 @@
-# AirCloud theme defaults.
+# Aerlume theme defaults.
 #
 # Keep site-specific identity and service accounts (author, email, domain,
 # social handles, comment repositories, analytics IDs, and donation details)
 # in the Hexo blog's root _config.yml. This file is shared by the theme and
 # must remain safe to publish as an open-source package.
 
-__: aircloud
+__: aerlume
 
 # 离线字体
 # @目录: source/fonts/

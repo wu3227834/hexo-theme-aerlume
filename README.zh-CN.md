@@ -146,7 +146,7 @@ font:
   display: swap            # 显示模式（auto / block / fallback / optional / swap）
 ```
 
-主题通过 `scripts/local-font.js` 生成 `@font-face`，并以 CSS 变量 `--aircloud-local-font` 应用到全站正文。
+主题通过 `scripts/local-font.js` 生成 `@font-face`，并以 CSS 变量 `--aerlume-local-font` 应用到全站正文。
 
 ### 社交链接
 
@@ -252,7 +252,7 @@ hexo-theme-aerlume/
 │       ├── donate.ejs     # 赞赏按钮
 │       └── analytics.ejs  # 统计脚本
 └── source/
-    ├── css/               # aircloud.less 为编译入口，aircloud.css 为编译产物
+    ├── css/               # aerlume.less 为编译入口，aerlume.css 为编译产物
     ├── fonts/             # 离线字体目录
     ├── js/                # 脚本文件
     │   └── lightbox.js    # 原生图片灯箱
@@ -283,7 +283,7 @@ hexo-theme-aerlume/
 
 ```bash
 # 在主题根目录下执行
-npx lessc source/css/aircloud.less source/css/aircloud.css
+npx lessc source/css/aerlume.less source/css/aerlume.css
 ```
 
 ## 📝 注意事项
