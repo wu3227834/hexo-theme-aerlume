@@ -7,6 +7,8 @@
 > 统计 ID 和赞赏信息等站点身份配置，请放在使用者自己的 Hexo 根目录
 > `_config.yml` 中，不要写入主题仓库。
 
+**Aerlume 效果预览：[Pudding 日常](https://wu3227834.github.io)**
+
 原始项目：[aircloud/hexo-theme-aircloud](https://github.com/aircloud/hexo-theme-aircloud)
 
 ## ✨ 特性
