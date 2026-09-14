@@ -1,6 +1,13 @@
-# Hexo-Theme-AirCloud
+# Hexo Theme Aerlume
 
-一个简洁轻量的 Hexo 博客主题，专注于阅读体验。
+一个简洁轻量、注重阅读体验的 Hexo 博客主题。本仓库是在原 AirCloud
+主题基础上的二次开发版本，现以 Aerlume 品牌持续维护，保留 MIT License。
+
+> 主题仓库只包含可复用的主题代码。作者、邮箱、域名、社交账号、评论仓库、
+> 统计 ID 和赞赏信息等站点身份配置，请放在使用者自己的 Hexo 根目录
+> `_config.yml` 中，不要写入主题仓库。
+
+原始项目：[aircloud/hexo-theme-aircloud](https://github.com/aircloud/hexo-theme-aircloud)
 
 ## ✨ 特性
 
@@ -21,7 +28,7 @@
 ```bash
 # 克隆到 themes 目录
 cd your-hexo-site/themes
-git clone https://github.com/aircloud/hexo-theme-aircloud.git my-aircloud
+git clone https://github.com/wu3227834/hexo-theme-aerlume.git hexo-theme-aerlume
 
 # 安装搜索插件（可选，用于全局搜索）
 cd ../
@@ -33,7 +40,7 @@ npm i hexo-generator-search --save
 修改 Hexo 根目录的 `_config.yml`：
 
 ```yaml
-theme: my-aircloud
+theme: hexo-theme-aerlume
 
 # 搜索配置
 search:
@@ -41,7 +48,25 @@ search:
   field: post
 ```
 
-### 3. 创建必要页面
+### 3. 使用 Demo 配置
+
+仓库提供了一份不含个人信息的 Hexo 示例配置：
+
+```text
+demo/_config.yml
+```
+
+示例项目名称为 `aerlume-journal`。可以将它复制到自己的 Hexo 项目中，
+再按注释填写站点标题、作者、域名、社交账号和第三方服务配置：
+
+```bash
+cp themes/hexo-theme-aerlume/demo/_config.yml _config.yml
+```
+
+如果已有博客配置，请只参考 Demo 中的主题相关配置，不要直接覆盖现有
+`_config.yml`。
+
+### 4. 创建必要页面
 
 ```bash
 hexo new page tags
@@ -69,6 +94,17 @@ comments: true
 ```
 
 ## ⚙️ 配置
+
+### 配置层级
+
+Hexo 配置分为两层：
+
+- 博客根目录 `_config.yml`：站点实例配置，包括标题、作者、邮箱、域名、
+  社交账号、Giscus、统计服务和赞赏信息。
+- `themes/hexo-theme-aerlume/_config.yml`：主题默认配置，目前用于主题字体等可复用
+  行为，不应放入任何个人账号信息。
+
+完整的根配置模板见 [`demo/_config.yml`](demo/_config.yml)。
 
 ### 基础配置
 
@@ -99,7 +135,7 @@ avatar_style:
 
 ```yaml
 font:
-  family: AirCloud Local   # @font-face 的 font-family 名称
+  family: Aerlume Local   # @font-face 的 font-family 名称
   file: auto               # auto = 自动加载目录下第一个字体文件，也可指定文件名
   weight: 400              # 字体粗细
   style: normal            # 字体样式（normal / italic / oblique）
@@ -192,7 +228,7 @@ donate:
 ## 📁 目录结构
 
 ```
-my-aircloud/
+hexo-theme-aerlume/
 ├── languages/             # i18n 语言文件（zh / en / ko）
 ├── scripts/
 │   └── local-font.js      # 离线字体 helper
@@ -253,6 +289,15 @@ npx lessc source/css/aircloud.less source/css/aircloud.css
 - 侧边栏默认收起，点击左上角按钮可展开，状态会被记住
 - 图片点击放大为原生实现（`js/lightbox.js`），无第三方依赖；主题配置或文章 front-matter 中设置 `fancybox: false` 可关闭
 
-## 许可
+## 许可与来源
 
-MIT
+本项目以 MIT License 发布。分发本项目或其重要代码部分时，请保留
+[`LICENSE`](LICENSE) 中的原始版权声明和许可证文本。
+
+本项目基于 XiaotaoNie 的 AirCloud 主题进行二次开发，并以 Aerlume
+品牌维护。原始项目版权声明仍然保留。原始项目地址：
+[https://github.com/aircloud/hexo-theme-aircloud](https://github.com/aircloud/hexo-theme-aircloud)。
+新增和修改部分由当前维护者维护。
+
+字体文件、第三方脚本、图标或其他外部资源可能具有独立许可证，不一定受
+本主题 MIT License 覆盖。重新分发前请分别确认这些资源的授权条件。
