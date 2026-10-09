@@ -46,6 +46,17 @@
   }
 }
 
+.index-container.is-notfound{
+  justify-content: center;
+  padding-right: clamp(24px, 6vw, 120px);
+  padding-left: clamp(24px, 6vw, 120px);
+
+  .index-middle{
+    flex: 0 1 900px;
+    width: 100%;
+  }
+}
+
 // 导航栏收起时左侧变窄
 .index-left.is-collapsed{
   flex-basis: 72px;
@@ -79,6 +90,10 @@
   .index-left.is-expanded{
     flex-basis: 180px;
   }
+  .index-container.is-notfound{
+    padding-right: clamp(20px, 4vw, 40px);
+    padding-left: clamp(20px, 4vw, 40px);
+  }
 }
 
 @media screen and (max-width: 680px){
@@ -105,6 +120,10 @@
   }
   .index-left.is-expanded{
     flex-basis: 100%;
+  }
+  .index-container.is-notfound{
+    padding-right: 16px;
+    padding-left: 16px;
   }
 
   .index-about{

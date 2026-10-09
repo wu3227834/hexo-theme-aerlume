@@ -19,7 +19,7 @@
     <i><%= config.subtitle %></i>
 </div>
 
-<div class="index-container">
+<div class="index-container<%= is_current('/404') ? ' is-notfound' : '' %>">
     <% if(!is_current('/404')){%>
     <div class="index-left is-collapsed">
         <%- partial('_partial/nav', null, {cache: false}) %>
